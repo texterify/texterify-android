@@ -1,0 +1,32 @@
+language: android
+jdk: oraclejdk8
+android:
+  components:
+  - android-30
+install: true
+before_install:
+- chmod +x gradlew
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+- yes | sdkmanager --update
+before_script:
+- touch local.properties
+script: "./gradlew build"
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache"
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: "./gradlew bintrayUpload"
+  on:
+    tags: true
+env:
+  global:
+    secure: A+Qa8h/R02DceLcLdB+IkxMlQIVoMBrcIJoP9AuX3ndah2O+dTHtDuAYqRh1+GbwE0JREM2KStP79acqrbnHYMqBRd6rzg/bLJEjE0VAITY5g3YJqYSjQlRcr9fhjuGgq9/Tyn87O4gbK5Vcvdj+PviOClG0ar4pWMN7MwlxZDTp4TWS+tZqGSae3K0R20/Mu82ad7QA4r/hGoScK+voXjRhSF147vrTYtuXBt/BnGN0iDWtcDmQUINCZU8Lu7xPtCdd67KmJv6Oe0DEKFE5jQlL5mPj5RiAJC7+R6gqDgJLeTxdr5LANl8v0a33COZoHhvJNLTb/IkEpTEbg/ZqYGcom56NTveLdc0eW368LPotjcJ5rl4A5fUQJ8Ucicty4KmUCURFjPhL/FC/k33Xr6PyjHieVqZ1MxGEJrMufLDS607+Cr1rK1kfTr3OkIy9T4yGZwyYWppHWtgk/6XYOqqs/YcDFv8J3iGPvc1x/wZFEp4dIGKuanYCbgMITw40rVodUIths9zSP1prxjaI1hj8Hs6LHw1ufq+ufDR5+m/ErGluGQ5kRsW5L8zv5GXRnonUjdf6BvfL3Eu67MRvftL5O5o1ncm2QXVZd2dm7jtRuiVEUmCwqCXxS9nXd+5RAj9ZGLJsWwZkcJERsfJugeH60foCrpF07K928sqxJJ4=

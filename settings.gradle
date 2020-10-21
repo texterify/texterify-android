@@ -1,0 +1,4 @@
+include ':ota-appcompat'
+include ':texterify-ota'
+include ':app'
+rootProject.name = "Texterify OTA Demo"

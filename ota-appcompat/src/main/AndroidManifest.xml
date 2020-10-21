@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.texterify.android.ota.androidx">
+
+    <application>
+        <meta-data
+            android:name="com.texterify.android.ota.androidx.TexterifyAppcompatTranscriber"
+            android:resource="@id/texterify_transcriber" />
+    </application>
+</manifest>

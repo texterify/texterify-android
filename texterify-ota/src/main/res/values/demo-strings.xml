@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="texterify_version">41992</string>
+
+    <string name="demo_normal">Hello World</string>
+    <string name="demo_styled"><i>Hello</i> <b>World</b> from <h2>me</h2></string>
+    <string name="demo_styled_raw"><![CDATA[<i>Hello</i> <b>World</b>]]></string>
+
+    <plurals name="demo_plural">
+        <item quantity="one">%1$d book</item>
+        <item quantity="other">%1$d books</item>
+    </plurals>
+</resources>
