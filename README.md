@@ -6,7 +6,7 @@ An Android SDK for OTA (Over-The-Air) translation updates with [Texterify](https
 
 ## How to use
 
-Include the folowing in your `build.gradle` file:
+Include the following in your `build.gradle` file:
 
 ```gradle
 implementation "com.texterify.android:texterify-ota:$latestRelease"
