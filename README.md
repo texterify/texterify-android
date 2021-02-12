@@ -9,8 +9,23 @@ An Android SDK for OTA (Over-The-Air) translation updates with [Texterify](https
 Include the following in your `build.gradle` file:
 
 ```gradle
-implementation "com.texterify.android.ota:texterify-ota:0.0.1"
-implementation "com.texterify.android.ota:ota-appcompat:0.0.1"
+implementation "com.texterify.android:texterify-ota:$latestRelease"
+// optional extension for Toolbar support
+implementation "com.texterify.android.ota:ota-appcompat:$latestRelease"
+```
+
+And add the repository in your app-level `build.gradle` file
+```gradle
+allprojects {
+    repositories {
+        // ...
+        jcenter()
+        mavenCentral()
+        // ...
+
+        maven { url 'https://dl.bintray.com/texterify/mvn/' }
+    }
+}
 ```
 
 ### Setup
