@@ -1,6 +1,5 @@
 package com.texterify.android.ota
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +29,7 @@ internal class TexterifyTranscriberFactory : Transcriber.Factory {
                 }
             }
             else -> {
-                Log.d("TxtfyTrscbr", "Unsupported type $clazz")
+                Logger.d("Unsupported type $clazz")
                 null
             }
         } as Transcriber<T>?

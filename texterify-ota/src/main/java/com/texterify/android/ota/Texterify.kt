@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.SystemClock
-import android.util.Log
 import io.github.inflationx.viewpump.ViewPump
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import java.util.Locale
@@ -58,7 +57,7 @@ public object Texterify {
             .build()
         ViewPump.init(viewPump)
         val done2 = SystemClock.elapsedRealtime()
-        Log.d("TxtfyInit", "Init took ${done - start}ms, total ${done2 - start}ms")
+        Logger.v("Init took ${done - start}ms, total ${done2 - start}ms")
     }
 
     /**
@@ -77,10 +76,11 @@ public object Texterify {
         val meta = config.context.packageManager
             .getApplicationInfo(config.context.packageName, PackageManager.GET_META_DATA).metaData
 
+
         return meta.keySet()
             .filter { key -> meta.getInt(key, -1) == R.id.texterify_transcriber }
             .map { clazzName ->
-                Log.d("TxtfyConfig", "Found $clazzName")
+                Logger.d("Config: Found factory `$clazzName`")
                 Class.forName(clazzName).newInstance() as Transcriber.Factory
             }
     }

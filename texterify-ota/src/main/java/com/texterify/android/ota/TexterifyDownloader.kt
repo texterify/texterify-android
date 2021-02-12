@@ -2,7 +2,6 @@ package com.texterify.android.ota
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
 import okhttp3.Cache
@@ -52,11 +51,11 @@ internal class TexterifyDownloader(
 
         client.newCall(request).execute().use { response ->
             if (response.isSuccessful) {
-                Log.d("TxtfyLoader", "Loaded cached data")
+                Logger.d("Loaded cached data")
                 val translations = readTranslations(response) ?: return
                 onLoaded(translations)
             } else {
-                Log.w("TxtfyLoader", "Failed loading cached data")
+                Logger.w("Failed loading cached data")
             }
         }
     }
@@ -76,7 +75,7 @@ internal class TexterifyDownloader(
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // ignore failure
-                Log.e("TxtfyLoader", "Refreshed data", e)
+                Logger.w("Refreshed data", e)
                 onComplete?.invoke(false)
             }
 
@@ -86,7 +85,7 @@ internal class TexterifyDownloader(
                         response.networkResponse() != null &&
                         response.code() != HttpURLConnection.HTTP_NOT_MODIFIED
                     ) {
-                        Log.d("TxtfyLoader", "Refreshed data")
+                        Logger.d("Refreshed data")
                         val translations = readTranslations(response) ?: return
                         onComplete?.invoke(true)
                         onLoaded(translations)
@@ -118,7 +117,7 @@ internal class TexterifyDownloader(
         return try {
             moshi.adapter(TexterifyRelease::class.java).fromJson(response.body()!!.source())!!.data
         } catch (ex: JsonDataException) {
-            Log.e("TxtfyLoader", "Failed loading I18N data", ex)
+            Logger.e("Failed loading I18N data", ex)
             null
         }
     }
