@@ -78,7 +78,7 @@ public object Texterify {
 
 
         return meta.keySet()
-            .filter { key -> meta.getInt(key, -1) == R.id.texterify_transcriber }
+            .filter { key -> meta.get(key) == R.id.texterify_transcriber }
             .map { clazzName ->
                 Logger.d("Config: Found factory `$clazzName`")
                 Class.forName(clazzName).newInstance() as Transcriber.Factory
