@@ -29,7 +29,7 @@ internal class TexterifyResources(
 
     override fun getString(id: Int, vararg formatArgs: Any?): String {
         Logger.d("getString($id, ${formatArgs.joinToString()})")
-        return getTranslation(id)?.value?.format(formatArgs) ?: super.getString(id, *formatArgs)
+        return getTranslation(id)?.value?.format(*formatArgs) ?: super.getString(id, *formatArgs)
     }
 
     override fun getText(id: Int): CharSequence {

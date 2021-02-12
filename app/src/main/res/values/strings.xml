@@ -11,6 +11,8 @@
     <string name="html_snippet"><![CDATA[<i>Hello</i> Local]]></string>
     <string name="styled_text"><i>Italics</i> <b>bold</b></string>
 
+    <string name="formatted_text">%1$s - %2$s</string>
+
     <plurals name="i_like_trains">
         <item quantity="other">%1$d boring trains</item>
         <item quantity="one">%1$d boring train</item>
