@@ -37,5 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("TxtfyMain", resources.getQuantityString(R.plurals.i_like_trains, 1, 1))
         Log.d("TxtfyMain", resources.getQuantityString(R.plurals.i_like_trains, 9, 9))
+
+        Log.d("TxtfyMain", getString(R.string.formatted_text, "Foo", "Bar"))
     }
 }

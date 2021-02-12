@@ -50,11 +50,12 @@ public interface Transcriber<T> {
                 val attr = attrs.getAttributeNameResource(i)
 
                 val mapping = mappings[attr] ?: continue
+                val value = attrs.getAttributeResourceValue(i, 0)
 
-                val value = attrs.getAttributeResourceValue(i, -1)
-                val text = manager.getText(value)
-
-                mapping(view, text)
+                if (value != 0) {
+                    val text = manager.getText(value)
+                    mapping(view, text)
+                }
             }
         }
     }
