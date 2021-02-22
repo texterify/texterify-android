@@ -4,6 +4,11 @@ An Android SDK for OTA (Over-The-Air) translation updates with [Texterify](https
 
 > This SDK is currently a preview release for early adopters to collect more feedback and should _not_ be used in production code.
 
+The SDK will wrap calls to `Resources` and hook into the view inflation to replace any string resources with their latest, cached version.  
+Currently there is support for a few attributes of `TextView`, `ImageView` and subclasses thereof, as well as `Toolbar` (found in `ota-appcompat`). Menu inflation (option menus, bottom bars, etc.) is currently not supported.
+
+Support for more attributes/types can be added via custom implementations of `Transcriber.Factory` by registering them with `Texterify.Config#addTranscriberFactory`.
+ 
 ## How to use
 
 Include the following in your `build.gradle` file:
