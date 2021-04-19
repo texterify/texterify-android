@@ -14,22 +14,18 @@ Support for more attributes/types can be added via custom implementations of `Tr
 Include the following in your `build.gradle` file:
 
 ```gradle
-implementation "com.texterify.android:texterify-ota:$latestRelease"
+implementation "com.github.texterify.texterify-android:texterify-ota:$latestRelease"
 // optional extension for Toolbar support
-implementation "com.texterify.android.ota:ota-appcompat:$latestRelease"
+implementation "com.github.texterify.texterify-android:ota-appcompat:$latestRelease"
 ```
 
-And add the repository in your app-level `build.gradle` file
+And add the jitpack repository in your app-level `build.gradle` file
 ```gradle
 allprojects {
-    repositories {
-        // ...
-        jcenter()
-        mavenCentral()
-        // ...
-
-        maven { url 'https://dl.bintray.com/texterify/mvn/' }
-    }
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
 }
 ```
 
